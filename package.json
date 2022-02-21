@@ -16,10 +16,10 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.1",
-    "@smb-org/commitlint-config-standard": "0.0.1",
-    "@smb-org/eslint-config-vue3-ts": "0.0.1",
-    "@smb-org/prettier-config-standard": "0.0.2",
-    "@smb-org/stylelint-config-standard": "0.0.1",
+    "@smb-org/commitlint-config-standard": "^0.0.1",
+    "@smb-org/eslint-config-vue-ts": "^0.0.1",
+    "@smb-org/prettier-config-standard": "^0.0.2",
+    "@smb-org/stylelint-config-standard": "^0.0.1",
     "@vitejs/plugin-vue": "^2.2.0",
     "husky": "^4.3.8",
     "lint-staged": "^12.3.4",
@@ -28,7 +28,7 @@
     "vue-tsc": "^0.29.8"
   },
   "eslintConfig": {
-    "extends": "@smb-org/vue3-ts"
+    "extends": "@smb-org/vue-ts"
   },
   "commitlint": {
     "extends": [
@@ -52,7 +52,7 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,vue}": [
-      "eslint src/ --fix",
+      "eslint --fix",
       "prettier --write"
     ],
     "*.{css,scss}": [
