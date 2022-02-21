@@ -1,0 +1,66 @@
+{
+  "name": "vite-vue-ts",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "format": "prettier . --write",
+    "lint": "npm run lint:script && npm run lint:style",
+    "lint:script": "eslint src/ --ext .vue --cache --fix",
+    "lint:style": "stylelint **/*.scss --cache --fix"
+  },
+  "dependencies": {
+    "vue": "^3.2.25"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.2.1",
+    "@smb-org/commitlint-config-standard": "0.0.1",
+    "@smb-org/eslint-config-vue3-ts": "0.0.1",
+    "@smb-org/prettier-config-standard": "0.0.2",
+    "@smb-org/stylelint-config-standard": "0.0.1",
+    "@vitejs/plugin-vue": "^2.2.0",
+    "husky": "^4.3.8",
+    "lint-staged": "^12.3.4",
+    "typescript": "^4.5.4",
+    "vite": "^2.8.0",
+    "vue-tsc": "^0.29.8"
+  },
+  "eslintConfig": {
+    "extends": "@smb-org/vue3-ts"
+  },
+  "commitlint": {
+    "extends": [
+      "@smb-org/commitlint-config-standard"
+    ]
+  },
+  "prettier": "@smb-org/prettier-config-standard",
+  "stylelint": {
+    "ignoreFiles": [
+      "dist/**"
+    ],
+    "extends": "@smb-org/stylelint-config-standard"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "post-merge": "post-npm-install",
+      "post-rebase": "post-npm-install",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,vue}": [
+      "eslint src/ --fix",
+      "prettier --write"
+    ],
+    "*.{css,scss}": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "*.{md,json,html},!package-lock.json": [
+      "prettier --write"
+    ]
+  }
+}
